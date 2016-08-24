@@ -20,9 +20,7 @@ BuildRequires:  tpm2-tss
 #Requires:       
 
 %description
-tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system APIs.
-It sits between TPM driver and applications, providing TPM2.0 specified APIs for 
-applications to access TPM module through kernel TPM drivers.
+tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 
 %prep
 %setup -q
