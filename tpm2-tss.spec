@@ -28,8 +28,8 @@ APIs for applications to access TPM module through kernel TPM drivers.
 
 %build
 ./bootstrap
-export CONFIG_SITE=$(pwd)/lib/default_config.site
-%configure
+CONFIG_SITE=$(pwd)/lib/default_config.site ./configure
+#%configure
 %make_build
 
 %install
@@ -37,7 +37,6 @@ export CONFIG_SITE=$(pwd)/lib/default_config.site
 
 
 %files
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 %{_sbindir}/resourcemgr
 
@@ -53,15 +52,12 @@ This package contains headers and libraries required to build applications that
 use tpm2-tss.
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/sapi/*.h
 %{_includedir}/tcti/*.h
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-
-%clean
 
 %post -p /sbin/ldconfig
 
