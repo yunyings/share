@@ -24,12 +24,11 @@ APIs for applications to access TPM module through kernel TPM drivers.
 
 %prep
 %setup -q
+./bootstrap
 
 
 %build
-./bootstrap
-CONFIG_SITE=$(pwd)/lib/default_config.site ./configure
-#%configure
+%configure
 %make_build
 
 %install
