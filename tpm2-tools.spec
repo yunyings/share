@@ -14,7 +14,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  openssl-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  tpm2-tss
+#BuildRequires:	pkgconfig(tpm2-tss-1.0-0.1.beta1) 
 
 
 #Requires:       
@@ -24,12 +24,11 @@ tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 
 %prep
 %setup -q
-
+./bootstrap
 
 %build
-./bootstrap
-./configure
-make %{?_smp_mflags}
+%configure --prefix=/usr
+%make_build
 
 
 %install
@@ -38,11 +37,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%{_prefix}/local/sbin/tpm2_*
+%{_sbindir}/tpm2_*
 
 %doc
 
 
 %changelog
-* Mon Aug 22 2016 Sun Yunying <yunying.sun@intel.com> - 1.1beta1-1
+* Fri Sep 2 2016 Sun Yunying <yunying.sun@intel.com> - 1.1beta1-1
 - Initial version of the package
