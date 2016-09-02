@@ -7,13 +7,15 @@ License:        BSD
 URL:            https://github.com/01org/tpm2.0-tools
 Source0:        https://github.com/01org/tpm2.0-tools/archive/%{name}-%{version}.tar.gz
 
+BuildRequires:	gcc 
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  openssl-devel
-BuildRequires:  libcurl-devel
+BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libcurl)
 #BuildRequires:	pkgconfig(tpm2-tss-1.0-0.1.beta1) 
 
 
