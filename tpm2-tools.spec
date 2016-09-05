@@ -17,6 +17,7 @@ BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libcurl)
 #BuildRequires:	pkgconfig(tpm2-tss) 
+ExclusiveArch:  %{ix86} x86_64
 
 Requires:      tpm2-tss = 1.0-0.1.beta1 
 
