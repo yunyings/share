@@ -14,7 +14,6 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
@@ -33,7 +32,7 @@ APIs for applications to access TPM module through kernel TPM drivers.
 
 %install
 %make_install
-
+find %{buildroot}%{_libdir} -type f -name \*.la -delete
 
 %files
 %doc README.md ChangeLog
@@ -53,7 +52,6 @@ use tpm2-tss.
 %files devel
 %{_includedir}/sapi
 %{_includedir}/tcti
-%{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
