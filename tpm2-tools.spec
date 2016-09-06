@@ -16,10 +16,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libcurl)
-#BuildRequires:	pkgconfig(tpm2-tss) 
-ExclusiveArch:  %{ix86} x86_64
+BuildRequires:	pkgconfig(sapi)
+BuildRequires:	pkgconfig(tcti-device)
+BuildRequires:	pkgconfig(tcti-socket)
 
-Requires:      tpm2-tss = 1.0-0.1.beta1 
+Requires:	tpm2-tss >= 1.0-0.1.beta1
 
 %description
 tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
