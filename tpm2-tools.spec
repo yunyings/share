@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:	pkgconfig(sapi)
 BuildRequires:	pkgconfig(tcti-device)
 BuildRequires:	pkgconfig(tcti-socket)
+ExclusiveArch:  %{ix86} x86_64
 
 Requires:	tpm2-tss >= 1.0-0.1.beta1
 
