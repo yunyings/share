@@ -19,9 +19,12 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:	pkgconfig(sapi)
 BuildRequires:	pkgconfig(tcti-device)
 BuildRequires:	pkgconfig(tcti-socket)
-ExclusiveArch:  %{ix86} x86_64
 
-Requires:	tpm2-tss >= 1.0-0.1.beta1
+# this package does not support big endian arch so far,
+# and has been verified only on Intel platforms.
+ExcludeArch:	%arm %sparc %alpha %power64
+
+Requires:	tpm2-tss = 1.0-0.1.beta1
 
 %description
 tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.

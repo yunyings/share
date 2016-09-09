@@ -14,7 +14,10 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
-ExcludeArch:	ppc %arm 
+
+# this package does not support big endian arch so far,
+# and has been verified only on Intel platforms.
+ExcludeArch:	%arm %sparc %alpha %power64
 
 %description
 tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
