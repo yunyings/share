@@ -14,7 +14,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
-ExcludeArch:	arm ppc
+ExcludeArch:	ppc %arm 
 
 %description
 tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
