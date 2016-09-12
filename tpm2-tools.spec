@@ -11,7 +11,7 @@ URL:            https://github.com/01org/tpm2.0-tools
 Source0:        https://github.com/01org/tpm2.0-tools/archive/v%{pkg_version}.tar.gz
 # If downloaded tarball name is different with the name specified in Source0
 # url, run script below to rename it, otherwise rpm fails to find the package.
-Source1:	rename-tarball.sh
+Source1:	rename-tarball_tools.sh
 
 BuildRequires:	gcc 
 BuildRequires:  autoconf
@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig(tcti-socket)
 
 # this package does not support big endian arch so far,
 # and has been verified only on Intel platforms.
-ExcludeArch:	%arm %sparc %alpha %power64
+ExcludeArch:	%arm %sparc %alpha %power64 aarch64
 
 Requires:	tpm2-tss = 1.0-0.1.beta1
 

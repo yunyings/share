@@ -12,7 +12,7 @@ Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{pkg_version}.tar.g
 # If name of downloaded tarball differs with the one in Source0 url, after
 # tarball is downloaded, run script below under the tarball's directory to
 # rename it to the url specified name, othwise rpm can't find the package.
-Source1:	rename-tarball.sh
+Source1:	rename-tarball_tss.sh
 
 BuildRequires:  gcc
 BuildRequires:  autoconf
@@ -24,7 +24,7 @@ BuildRequires:  pkgconfig(cmocka)
 
 # this package does not support big endian arch so far,
 # and has been verified only on Intel platforms.
-ExcludeArch:	%arm %sparc %alpha %power64
+ExcludeArch:	%arm %sparc %alpha %power64 aarch64
 
 %description
 tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
