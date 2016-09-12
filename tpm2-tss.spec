@@ -3,9 +3,16 @@ Version:        1.0
 Release:        0.1.beta1%{?dist}
 Summary:        TPM2.0 Software Stack
 
+%global pkg_version	1.0-beta_1
+%global pkg_prefix	TPM2.0-TSS
+
 License:        BSD
 URL:            https://github.com/01org/TPM2.0-TSS
-Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{pkg_version}.tar.gz
+# If name of downloaded tarball differs with the one in Source0 url, after
+# tarball is downloaded, run script below under the tarball's directory to
+# rename it to the url specified name, othwise rpm can't find the package.
+Source1:	rename-tarball.sh
 
 BuildRequires:  gcc
 BuildRequires:  autoconf
@@ -24,9 +31,8 @@ tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
 APIs. It sits between TPM driver and applications, providing TPM2.0 specified
 APIs for applications to access TPM module through kernel TPM drivers.
 
-
 %prep
-%setup -q
+%autosetup -n %{pkg_prefix}-%{pkg_version} 
 ./bootstrap
 
 
