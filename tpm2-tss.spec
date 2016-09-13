@@ -8,11 +8,7 @@ Summary:        TPM2.0 Software Stack
 
 License:        BSD
 URL:            https://github.com/01org/TPM2.0-TSS
-Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{pkg_version}.tar.gz
-# If name of downloaded tarball differs with the one in Source0 url, after
-# tarball is downloaded, run script below under the tarball's directory to
-# rename it to the url specified name, othwise rpm can't find the package.
-Source1:	rename-tarball_tss.sh
+Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{pkg_version}.tar.gz#/%{pkg_prefix}-%{pkg_version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  autoconf
@@ -70,5 +66,5 @@ use tpm2-tss.
 %postun -p /sbin/ldconfig
 
 %changelog
-* Mon Sep 12 2016 Sun Yunying <yunying.sun@intel.com> - 1.0beta1-1
+* Tue Sep 13 2016 Sun Yunying <yunying.sun@intel.com> - 1.0beta1-1
 - Initial version of the package
