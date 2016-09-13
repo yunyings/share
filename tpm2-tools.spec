@@ -3,15 +3,12 @@ Version:        1.1
 Release:        0.1.beta1%{?dist}
 Summary:        a TPM2.0 testing tool build upon TPM2.0-TSS
 
-%global pkg_version	1.1-beta_1
-%global pkg_prefix	tpm2.0-tools
+%global	pkg_version	1.1-beta_1
+%global	pkg_prefix	tpm2.0-tools
 
 License:        BSD
 URL:            https://github.com/01org/tpm2.0-tools
-Source0:        https://github.com/01org/tpm2.0-tools/archive/v%{pkg_version}.tar.gz
-# If downloaded tarball name is different with the name specified in Source0
-# url, run script below to rename it, otherwise rpm fails to find the package.
-Source1:	rename-tarball_tools.sh
+Source0:        https://github.com/01org/tpm2.0-tools/archive/v%{pkg_version}.tar.gz#/%{pkg_prefix}-%{pkg_version}.tar.gz
 
 BuildRequires:	gcc 
 BuildRequires:  autoconf
@@ -30,6 +27,7 @@ BuildRequires:	pkgconfig(tcti-socket)
 # and has been verified only on Intel platforms.
 ExcludeArch:	%arm %sparc %alpha %power64 aarch64
 
+# tpm2-tools is heavily depending on TPM2.0-TSS project, matched tss is required
 Requires:	tpm2-tss = 1.0-0.1.beta1
 
 %description
@@ -55,5 +53,5 @@ tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 
 
 %changelog
-* Mon Sep 12 2016 Sun Yunying <yunying.sun@intel.com> - 1.1beta1-1
+* Tue Sep 13 2016 Sun Yunying <yunying.sun@intel.com> - 1.1beta1-1
 - Initial version of the package
