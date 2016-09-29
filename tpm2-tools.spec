@@ -53,5 +53,5 @@ tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 
 
 %changelog
-* Tue Sep 13 2016 Sun Yunying <yunying.sun@intel.com> - 1.1beta1-1
+* Thu Sep 29 2016 Sun Yunying <yunying.sun@intel.com> - 1.1-0.1.beta1
 - Initial version of the package

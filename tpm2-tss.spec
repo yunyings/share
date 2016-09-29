@@ -66,5 +66,5 @@ use tpm2-tss.
 %postun -p /sbin/ldconfig
 
 %changelog
-* Tue Sep 13 2016 Sun Yunying <yunying.sun@intel.com> - 1.0beta1-1
+* Thu Sep 29 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-0.1.beta1
 - Initial version of the package
