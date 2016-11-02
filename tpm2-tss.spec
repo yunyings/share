@@ -6,7 +6,9 @@ Summary:        TPM2.0 Software Stack
 %global	pkg_version	1.0-beta_1
 %global	pkg_prefix	TPM2.0-TSS
 
-License:        BSD
+# The entire source code is under BSD except implementation.h and tpmb.h which
+# is under TCGL(Trusted Computing Group License).
+License:        BSD and TCGL
 URL:            https://github.com/01org/TPM2.0-TSS
 Source0:        https://github.com/01org/TPM2.0-TSS/archive/%{pkg_version}.tar.gz#/%{pkg_prefix}-%{pkg_version}.tar.gz
 
@@ -66,5 +68,5 @@ use tpm2-tss.
 %postun -p /sbin/ldconfig
 
 %changelog
-* Thu Sep 29 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-0.1.beta1
+* Wed Nov 2 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-0.1.beta1
 - Initial version of the package
