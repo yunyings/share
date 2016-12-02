@@ -3,8 +3,8 @@ Version:        1.0
 Release:        1%{?dist}
 Summary:        TPM2.0 Software Stack
 
-%global	pkg_version	1.0
-%global	pkg_prefix	TPM2.0-TSS
+%global  pkg_version 1.0
+%global  pkg_prefix  TPM2.0-TSS
 
 # The entire source code is under BSD except implementation.h and tpmb.h which
 # is under TCGL(Trusted Computing Group License).
@@ -23,7 +23,7 @@ BuildRequires:  pkgconfig(cmocka)
 
 # this package does not support big endian arch so far,
 # and has been verified only on Intel platforms.
-ExcludeArch:	%arm %sparc %alpha %power64 aarch64
+ExcludeArch:  %arm %sparc %alpha %power64 aarch64
 
 %description
 tpm2-tss is a software stack supporting Trusted Platform Module(TPM) 2.0 system
@@ -69,5 +69,5 @@ use tpm2-tss.
 %postun -p /sbin/ldconfig
 
 %changelog
-* Mon Nov 14 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-1
+* Fri Dec 2 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-1
 - Initial version of the package
