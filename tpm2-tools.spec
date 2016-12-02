@@ -1,7 +1,7 @@
 Name: tpm2-tools
 Version: 1.1.0 
 Release: 1%{?dist}
-Summary: a TPM2.0 testing tool build upon TPM2.0-TSS
+Summary: A TPM2.0 testing tool build upon TPM2.0-TSS
 
 %global pkg_version 1.1.0
 %global pkg_prefix tpm2.0-tools
