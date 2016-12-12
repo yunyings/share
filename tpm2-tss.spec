@@ -15,7 +15,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  autoconf-archive
 BuildRequires:  libtool
-BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  pkgconfig
 
 # this package does not support big endian arch so far,
 # and has been verified only on Intel platforms.
@@ -76,7 +76,7 @@ use tpm2-tss.
 - Use ExclusiveArch instead of ExcludeArch
 - Use less wildcard in %files section to be more specific
 - Add trailing slash at end of added directory in %file section
-- Remove autoconf/automake/pkgconfig from BuildRequires
+- Remove autoconf/automake/pkgconfig(cmocka) from BuildRequires
 - Increase release version to 2
 
 * Fri Dec 2 2016 Sun Yunying <yunying.sun@intel.com> - 1.0-1
