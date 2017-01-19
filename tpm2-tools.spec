@@ -1,6 +1,6 @@
 Name: tpm2-tools
 Version: 1.1.0 
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: A TPM2.0 testing tool build upon TPM2.0-TSS
 
 %global pkg_prefix tpm2.0-tools
@@ -16,7 +16,7 @@ BuildRequires: autoconf-archive
 BuildRequires: pkgconfig(cmocka)
 BuildRequires: pkgconfig(libcurl)
 BuildRequires: pkgconfig(openssl)
-# tpm2-tss-devel-1.0-2 provides sapi/tcti-device/tcti-socket
+# tpm2-tss-devel provides sapi/tcti-device/tcti-socket
 BuildRequires: pkgconfig(sapi)
 BuildRequires: pkgconfig(tcti-device)
 BuildRequires: pkgconfig(tcti-socket)
@@ -26,7 +26,7 @@ BuildRequires: pkgconfig(tcti-socket)
 ExclusiveArch: %{ix86} x86_64
 
 # tpm2-tools is heavily depending on TPM2.0-TSS project, matched tss is required
-Requires: tpm2-tss = 1.0-2
+Requires: tpm2-tss%{?_isa} = %{version}-%{release}
 
 %description
 tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
@@ -48,6 +48,12 @@ tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 %{_sbindir}/tpm2_*
 
 %changelog
+* Thu Jan 19 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-3
+- Change spec file permission to 644 to avoid rpmlint complain
+- Update Requires to fix dependency check error reported in Bodhi
+- Remove tpm2-tss-devel version in BuildRequires comment
+- Update release version and changelog
+
 * Wed Dec 21 2016 Sun Yunying <yunying.sun@intel.com> - 1.1.0-2
 - Remove pkg_version to avoid dupliate use of version
 - Remove redundant BuildRequires for autoconf/automake/pkgconfig
