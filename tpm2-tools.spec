@@ -1,6 +1,6 @@
 Name: tpm2-tools
 Version: 1.1.0 
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: A TPM2.0 testing tool build upon TPM2.0-TSS
 
 %global pkg_prefix tpm2.0-tools
@@ -26,7 +26,7 @@ BuildRequires: pkgconfig(tcti-socket)
 ExclusiveArch: %{ix86} x86_64
 
 # tpm2-tools is heavily depending on TPM2.0-TSS project, matched tss is required
-Requires: tpm2-tss%{?_isa} = %{version}-%{release}
+Requires: tpm2-tss%{?_isa} = 1.0-2%{?dist} 
 
 %description
 tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
@@ -48,6 +48,10 @@ tpm2-tools is a batch of testing tools for tpm2.0. It is based on tpm2-tss.
 %{_sbindir}/tpm2_*
 
 %changelog
+* Fri Jan 20 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-4
+- Dependency check failed for Requires again, here to fix this
+- Update release version and changelog
+
 * Thu Jan 19 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-3
 - Change spec file permission to 644 to avoid rpmlint complain
 - Update Requires to fix dependency check error reported in Bodhi
