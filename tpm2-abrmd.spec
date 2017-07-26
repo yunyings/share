@@ -24,7 +24,7 @@ BuildRequires: pkgconfig(tcti-socket)
 ExclusiveArch: %{ix86} x86_64
 
 # tpm2-abrmd depends on tpm2-tss-devel for sapi/tcti-device/tcti-socket libs
-Requires: tpm2-tss-devel%{?_isa} >= 1.0-2%{?dist} 
+Requires: tpm2-tss-devel%{?_isa} >= 1.1.0-1%{?dist} 
 
 %description
 tpm2-abrmd is a system daemon implementing the TPM2 access broker (TAB) and
@@ -73,5 +73,5 @@ required to build applications that use tpm2-abrmd.
 %postun -p /sbin/ldconfig
 
 %changelog
-* Tue Jul 25 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-1
+* Wed Jul 26 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-1
 - Initial packaging
