@@ -39,8 +39,10 @@ autoreconf -vif
 
 %install
 %make_install
+%ifarch x86_64
 mkdir -p %{buildroot}%{_unitdir}
-mv %{buildroot}%{_prefix}/lib64/systemd/system/tpm2-abrmd.service %{buildroot}%{_unitdir}
+mv %{buildroot}%{_libdir}/systemd/system/tpm2-abrmd.service %{buildroot}%{_unitdir}
+%endif
 find %{buildroot}%{_libdir} -type f -name \*.la -delete
 
 %files
