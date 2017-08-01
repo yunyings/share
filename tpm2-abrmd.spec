@@ -1,6 +1,6 @@
 Name: tpm2-abrmd
 Version: 1.1.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: A system daemon implementing TPM2 Access Broker and Resource Manager
 
 License: BSD
@@ -34,15 +34,11 @@ Resource Manager (RM) spec from the TCG.
 autoreconf -vif
 
 %build
-%configure --disable-static --disable-silent-rules
+%configure --disable-static --disable-silent-rules --with-systemdsystemunitdir=%{_unitdir}
 %make_build
 
 %install
 %make_install
-%ifarch x86_64
-mkdir -p %{buildroot}%{_unitdir}
-mv %{buildroot}%{_libdir}/systemd/system/tpm2-abrmd.service %{buildroot}%{_unitdir}
-%endif
 find %{buildroot}%{_libdir} -type f -name \*.la -delete
 
 %files
@@ -84,6 +80,9 @@ required to build applications that use tpm2-abrmd.
 %systemd_postun
 
 %changelog
+* Tue Aug 1 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-3
+- Use config option with-systemdsystemunitdir to set systemd unit file location
+
 * Mon Jul 31 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-2
 - Removed BuildRequires for gcc
 - Move tpm2-abrmd systemd service to /usr/lib/systemd/system
