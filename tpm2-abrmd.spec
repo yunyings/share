@@ -1,6 +1,6 @@
 Name: tpm2-abrmd
 Version: 1.1.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: A system daemon implementing TPM2 Access Broker and Resource Manager
 
 License: BSD
@@ -34,11 +34,14 @@ Resource Manager (RM) spec from the TCG.
 autoreconf -vif
 
 %build
-%configure --disable-static --disable-silent-rules --with-systemdsystemunitdir=%{_unitdir}
+%configure --disable-static --disable-silent-rules \
+           --with-systemdsystemunitdir=%{_unitdir} \
+           --with-udevrulesdir=%{_udevrulesdir}
 %make_build
 
 %install
 %make_install
+mv %{buildroot}/%{_udevrulesdir}/tpm-udev.rules %{buildroot}/%{_udevrulesdir}/60-tpm-udev.rules
 find %{buildroot}%{_libdir} -type f -name \*.la -delete
 
 %files
@@ -48,7 +51,7 @@ find %{buildroot}%{_libdir} -type f -name \*.la -delete
 %{_sbindir}/tpm2-abrmd
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/tpm2-abrmd.conf
 %{_unitdir}/tpm2-abrmd.service
-%{_libdir}/udev/rules.d/tpm-udev.rules
+%{_udevrulesdir}/60-tpm-udev.rules
 %{_mandir}/man3/tss2_tcti_tabrmd_init.3.gz
 %{_mandir}/man3/tss2_tcti_tabrmd_init_full.3.gz
 %{_mandir}/man7/tcti-tabrmd.7.gz
@@ -68,6 +71,7 @@ required to build applications that use tpm2-abrmd.
 %{_libdir}/libtcti-tabrmd.so
 %{_libdir}/pkgconfig/tcti-tabrmd.pc
 
+# on package installation
 %post
 /sbin/ldconfig
 %systemd_post tpm2-abrmd.service
@@ -77,9 +81,13 @@ required to build applications that use tpm2-abrmd.
 
 %postun
 /sbin/ldconfig
-%systemd_postun
+%systemd_postun tpm2-abrmd.service
 
 %changelog
+* Tue Aug 15 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-4
+- Rename and relocate udev rules file to _udevrulesdir
+- Update scriptlet to add service name after systemd_postrun
+
 * Tue Aug 1 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-3
 - Use config option with-systemdsystemunitdir to set systemd unit file location
 
