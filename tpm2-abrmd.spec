@@ -1,11 +1,11 @@
 Name: tpm2-abrmd
 Version: 1.1.0
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: A system daemon implementing TPM2 Access Broker and Resource Manager
 
 License: BSD
 URL:     https://github.com/01org/tpm2-abrmd
-Source0: https://github.com/01org/tpm2-abrmd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0: https://github.com/01org/tpm2-abrmd/archive/%{version}/%{name}-%{version}.tar.gz
 
 %{?systemd_requires}
 BuildRequires: systemd
@@ -84,6 +84,9 @@ required to build applications that use tpm2-abrmd.
 %systemd_postun tpm2-abrmd.service
 
 %changelog
+* Wed Aug 16 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-5
+- Updated source0 URL to fix rpmlint warnings
+
 * Tue Aug 15 2017 Sun Yunying <yunying.sun@intel.com> - 1.1.0-4
 - Rename and relocate udev rules file to _udevrulesdir
 - Update scriptlet to add service name after systemd_postrun
